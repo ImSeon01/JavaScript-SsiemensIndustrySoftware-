@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 문서 안에 &lt;script&gt; 태그로 자바스크립트 작성하기</title>
+</head>
+<body>
+    <h1 id="heading">자바스크립트</h1>
+    <p id="text">위 텍스트를 클릭해 보세요</p>
+
+    <!--자바스크립트 소스를 작성-->
+    <script>
+        var heading = document.querySelector('#heading');
+        console.log(heading);
+        heading.onclick = function(){
+            heading.style.color = "red";
+        }
+    </script>
+    <!--
+        HTML 문서 안에 자바스크립트 소스를 작성
+        * 장점
+        - 웹 문서에서 바로 확인할 수 있다.
+        * 단점
+        - HTML 태그와 자바스크립트 소스가 함께 섞여 있어서 웹 문서가 복잡
+        - 특히 소스를 수정할 때 필요한 코드를 찾아보기 어려움
+        - 재사용성이 어렵다
+        
+    -->
+</body>
+</html>
