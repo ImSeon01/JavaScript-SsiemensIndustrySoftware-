@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>var</title>
+    <title>variable</title>
 </head>
-<>
     <h1>* 변수</h1>
     <p>
         - 데이터를 저장하는 공간 <br> 
@@ -43,7 +42,7 @@
         myFunc();
         // I am available inside this function
 
-        console.log(functionScoped);
+        // console.log(functionScoped);
         // Uncaught ReferenceError: functionScoped is not defined
         console.log("=========================")
     </script>
@@ -52,10 +51,77 @@
         - let(및 const) 키워드로 선언된 변수는 블록 범위 <br>
         - 즉, 선언된 블록과 해당 하위 블록 내에서만 사용 <br>
     </p>
-    
-    
-    
+    <hr>
+    <script>
+        console.log("let--------");
+        // using 'let'
+        let x = "global";
 
+        if(x === "global"){
+            let x = "block-scoped";
+            console.log(x);
+            // block-scoped
+        }// end if
+
+        console.log(x);
+        // global
+
+        console.log("var-------");
+        // using 'var'
+        var y = "global";
+
+        if(y === "global"){
+            var y = "block-scoped";
+
+            console.log(y);
+            // block-scoped
+        }// end if
+
+        console.log(y);
+        // block-scoped
+    </script>
+
+    <h1>3. const</h1>
+    <p>
+        - 블록 범위 <br>
+        - 재할당을 통해 값을 변경할 수 없고 재선언할 수 없다<br>
+        <hr>
+    </p>
+    <script>
+        const constant = "I am a constant";
+        // constant = "I can't be reassigned";
+        // Assignment to constant variable
+    </script>
+
+    <script>
+        const person = {
+            name : 'Alberto',
+            age : 25
+        }
+        person.age = 26;
+        console.log(person.age);
+        // 26
+
+        // person 고정
+        Object.freeze(person);
+        person.age = 30;
+        console.log(person.age);
+        // 26
+    </script>
+    
+    <h1>* The Temporal dead zone</h1>
+    <p>
+        - var는 정의되기 전에 접근할 수 있지만, 그 값에는 접근할 수 없다. <br>
+        - let과 const는 정의되기 전에 접근할 수 없다. <br>
+    </p>
+    <script>
+        console.log(a); // undefined
+        var a = 'I am a variable';
+
+        // console.log(b);
+        // let b = 'I am a let';
+        // Cannot access 'b' before initialization
+    </script>
 
 </body>
 </html>
