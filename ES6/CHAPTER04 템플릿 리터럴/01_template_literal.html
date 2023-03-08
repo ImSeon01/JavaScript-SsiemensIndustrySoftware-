@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>템플릿 리터럴</title>
+</head>
+<body>
+    <h1>* 템플릿 리터럴</h1>
+    <p>
+        - 통상적인 따옴표 문자 대신 백틱 문자를 사용 <br>
+        - 문자열 삽입, 표현식 삽입, 여러 줄 문자열 생성
+    </p>
+    <hr>
+    <script>
+        // ES5
+        var name = "Alberto";
+        var greeting = 'Hello my name is ' + name;
+        console.log(greeting); 
+        // Hello my name is Alberto
+
+        // ES6
+        let name2 = "Alberto";
+        const greeting2 = `Hello my name is ${name}`;
+        console.log(greeting2);
+        // Hello my name is Alberto
+
+        console.log("==================================");
+        
+        // ES5
+        var a = 1;
+        var b = 10;
+        console.log('1 * 10 is ' + (a * b));
+        // 1 * 10 is 10
+        
+        // es6
+        let a2 = 1;
+        let b2 = 10;
+        console.log(`1 * 10 is ${a2 * b2}`);
+        // 1 * 10 is 10
+        console.log("==================================");
+        
+        // ES5
+        var text = "hello, \
+        my name is Alberto \
+        how are you?\ ";
+        console.log(text);
+        // hello,         my name is Alberto         how are you?
+        
+        // ES6
+        const content = `hello,
+        my name is Alberto
+        how are you?`;
+        console.log(content);
+        //         my name is Alberto
+        //         how are you?
+        console.log("==================================");
+    </script>
+
+    <h1>* Nesting templates 중첩 템플릿</h1>
+</body>
+</html>
