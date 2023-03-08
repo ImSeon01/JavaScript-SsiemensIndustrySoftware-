@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 인수의 기본값</title>
+</head>
+<body>
+    <h1>* ES6 이전</h1>
+    <p>
+        - 함수를 호출할 때 매개변수의 개수만큼 인수를 전달하는 것이 일반적 <br>
+        - 그렇지 않은 경우에도 에러가 발생하지 않는다 <br>
+        - 즉, 함수는 매개변수의 개수와 인수의 개수를 체크하지 않는다. <br>
+        - 인수가 부족한 경우, 매개변수의 값은 undefined이다. <br>
+    </p>
+    <hr>
+    <script>
+        function getLocation(city, country, continent){
+            if(typeof country === 'undefined'){
+                country = 'Italy'
+            } // end if
+            if(typeof continent === 'undefined'){
+                continent = 'Europe';
+            } // end if
+            console.log(continent, country, city)
+        } // end fuc
+
+        getLocation('Milan');
+        // Europe Italy Milan
+        getLocation('Paris','France');
+        // Europe France Paris
+
+        console.log("===============================");
+        function getLocation(continent, country, city){
+            if(typeof country === 'undefined'){
+                country = 'Italy';
+            }// end if
+            if(typeof continent === 'undefined'){
+                continent = 'Europe'
+            }// end if
+            console.log(continent, country, city);
+        } // end fuc
+        
+        getLocation(undefined, undefined, 'Milan');
+        // Europe Italy Milan
+        getLocation(undefined, 'Paris', 'France');
+        // Europe Paris France
+        console.log("===============================");
+        </script>
+
+<h1>* ES6 </h1>
+<p>
+    - ES6에서는 매개변수 기본값을 사용하여 함수 내에서 수행하던 인수 체크 및 초기화를 간소화 <br>
+    - 매개변수 기본값은 매개변수에 인수를 전달하지 않았을 경우에만 유효 <br>
+    - 매개변수 기본값은 함수 정의 시 선언한 매개변수 개수를 나타내는 함수 객체의 length 프로그램퍼티와 arguments 객체에 영향을 주지 않는다. <br>
+</p>
+<hr>
+<script>
+    function calculatePrice(total, tax = 0.1, tip = 0.05){
+        return total + (total * tax) + (total * tip);
+    } // end funct
+    
+        console.log(calculatePrice(100, 0.15)); // 120
+        console.log(calculatePrice(100, undefined, 0.15)); // 125
+        console.log("===============================");
+        </script>
+
+<script>
+    // destructuring
+    function calculatePrice(
+        {total = 0, tax = 0.1, tip = 0.05} = {}
+        ){
+            return total + (total * tax) + (total * tip);
+        } // end func
+        const bill = calculatePrice({tip:0.15,total:150});
+        console.log(bill); // 187.5
+        console.log(calculatePrice(100)); // 0
+        console.log("===============================");
+    </script>
+    
+</body>
+</html>
