@@ -59,5 +59,74 @@
     </script>
 
     <h1>* Nesting templates 중첩 템플릿</h1>
+    <p>
+        - join('\n') map에 추가하면 콤마, 제거가능
+    </p>
+    <h2>** 콤마 제거 전</h2>
+    <div id="test"></div>
+    <h2>** 콤마 제거</h2>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <!-- 콤마 제거 전-->
+    <script>
+        const people = [{
+            name : 'Alberto', age : 27
+        },{
+            name : 'Caroline', age : 27,
+        },{
+            name : 'Josh', age : 31
+        }];
+        const markup = `
+        <ul>
+            ${people.map(person => `<li>${person.name}</li>`)}
+        </ul>`;
+        console.log(markup);
+        // <ul>
+        //     <li>Alberto</li>,<li>Caroline</li>,<li>Josh</li>
+        // </ul>
+        document.getElementById("test").innerHTML = markup;
+        console.log("========================================");
+        </script>
+    <!-- 콤마 제거 1-->
+    <script>
+        const people2 = [{
+            name : 'Alberto', age : 27
+        }, {
+            name : 'Caroline', age : 27
+        }, {
+            name : 'Josh', age : 31
+        }];
+        let str = "";
+        str += "<ul>";
+        for(let i = 0; i < people2.length; i++){
+            str += "<li>" + people2[i].name + "</li>";
+        }// for end
+        str += "</ul>";
+        console.log(str);
+        // <ul><li>Alberto</li><li>Caroline</li><li>Josh</li></ul>
+        document.getElementById("test2").innerHTML = str;
+        console.log("========================================");
+    </script>
+    <!--콤마 제거 2-->
+    <script>
+        const people3 = [{
+            name : 'Alberto', age : 27
+        },{
+            name : 'Caroline', age : 27,
+        },{
+            name : 'Josh', age : 31
+        }];
+        const markup2 = `
+        <ul>
+            ${people.map(person => `<li>${person.name}</li>`).join('\n')}
+        </ul>`;
+        console.log(markup);
+        // <ul>
+        //     <li>Alberto</li>,<li>Caroline</li>,<li>Josh</li>
+        // </ul>
+        document.getElementById("test3").innerHTML = markup2;
+        console.log("========================================");
+        </script>
+    </script>
 </body>
 </html>
